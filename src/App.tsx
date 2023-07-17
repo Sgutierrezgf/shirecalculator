@@ -90,7 +90,7 @@ function App() {
   const sendWhatsAppMessage = () => {
     const { totalDays, totalHours, paymentTransport, payment } = summaryData;
     const message = `¡Hola! soy sebastian.\n\nResumen del pago:\nDías totales: ${totalDays}\nTotal de horas: ${totalHours}\nPago de transporte: ${paymentTransport}\nPago total: ${payment}`;
-    const phoneNumber = "3012363606"; // Reemplaza con el número de WhatsApp de destino
+    const phoneNumber = "3004130350"; // Reemplaza con el número de WhatsApp de destino
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
