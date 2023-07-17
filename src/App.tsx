@@ -22,6 +22,8 @@ function App() {
     payment: 0,
   });
 
+  const [whatsappNumber, setWhatsappNumber] = useState("");
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     index: number
@@ -90,7 +92,7 @@ function App() {
   const sendWhatsAppMessage = () => {
     const { totalDays, totalHours, paymentTransport, payment } = summaryData;
     const message = `¡Hola! soy sebastian.\n\nResumen del pago:\nDías totales: ${totalDays}\nTotal de horas: ${totalHours}\nPago de transporte: ${paymentTransport}\nPago total: ${payment}`;
-    const phoneNumber = "3004130350"; // Reemplaza con el número de WhatsApp de destino
+    const phoneNumber = whatsappNumber.trim(); // Reemplaza con el número de WhatsApp de destino
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -113,6 +115,21 @@ function App() {
         type="text"
         name="nombre"
         placeholder="Nombre"
+      />
+      <label
+        className="block text-gray-700 text-sm font-bold mb-2"
+        htmlFor="whatsapp"
+      >
+        Número de WhatsApp
+      </label>
+      <input
+        className="appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="whatsapp"
+        type="text"
+        name="whatsapp"
+        placeholder="Número de WhatsApp"
+        value={whatsappNumber}
+        onChange={(e) => setWhatsappNumber(e.target.value)}
       />
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
